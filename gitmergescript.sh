@@ -10,7 +10,7 @@ merge(){
 	echo "............................."
 	read -p "Do you want to merge with the master? (y/n) _" -n 1 -r
 	echo
-		if [[$REPLY =~ ^[Yy]$ ]]
+		if [[ $REPLY =~ ^[Yy]$ ]]
 		then
 			git checkout master
 			git merge --no-ff $2
@@ -28,7 +28,7 @@ check_branch() {
 	echo "Work dir is `pwd`"
 	git checkout $1
 	git checkout $2
-	if [ git branch --list $1]; then
+	if [ git branch --list $1 ]; then
 		echo "Merging $1 with $2 ..."
 		merge $1 and $2
 	else
@@ -41,7 +41,7 @@ check_branch() {
 for arg in "$@"
 
 do
-	if [ $arg = "-h"] || [ $arg = "-help"]; then
+	if [ $arg = "-h" ] || [ $arg = "-help" ]; then
 		echo "# ---> User Interactive"
 		echo "Usage: ./git_merge.sh"
 		echo "OR"
